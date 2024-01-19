@@ -64,6 +64,16 @@ def posiciona_frota (frota):
     
     return tabuleiro_atualizado
 
+def afundados(frota, tabuleiro):
+    afundados = 0
+    for embarcacao in frota:
+        cont_X = 0
+        for loc in embarcacao["posicoes"]:
+            if tabuleiro[loc[0]][loc[1]] == "X":
+                cont_X += 1
+        if cont_X == len(embarcacao["posicoes"]):
+            afundados += 1
+    return afundados
 
 def posicao_valida(dados_de_posicionamento, frota):
     posicao = define_posicoes(dados_de_posicionamento)
