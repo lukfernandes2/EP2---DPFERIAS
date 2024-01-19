@@ -63,3 +63,38 @@ def posiciona_frota (frota):
                                     tabuleiro_atualizado[i][j] = 1
     
     return tabuleiro_atualizado
+
+
+def posicao_valida (dados, frota): #PRECISA SER CORRIGIDA
+
+    
+    contador_falso = 0
+
+    dados_de_posicao = define_posicoes(dados)
+
+    for embarcacao in frota:
+
+        for posicao, numero in embarcacao.items():
+
+            if posicao == "posicoes":
+
+                coordenadas = embarcacao[posicao]
+
+                for coordenada in coordenadas:
+
+                    for coordinate in dados_de_posicao:
+
+                        if coordenada[0] == coordinate[0] and coordenada[1] == coordinate[1]:
+
+                            contador_falso += 1
+                        
+                       
+    
+
+    if contador_falso > 0:
+
+        return False
+    
+    else: 
+
+        return True
