@@ -65,36 +65,14 @@ def posiciona_frota (frota):
     return tabuleiro_atualizado
 
 
-def posicao_valida (dados, frota): #PRECISA SER CORRIGIDA
-
-    
-    contador_falso = 0
-
-    dados_de_posicao = define_posicoes(dados)
-
+def posicao_valida(dados_de_posicionamento, frota):
+    posicao = define_posicoes(dados_de_posicionamento)
+    for elem in posicao:
+        if elem[0] > 9 or elem[1] > 9:
+            return False
     for embarcacao in frota:
-
-        for posicao, numero in embarcacao.items():
-
-            if posicao == "posicoes":
-
-                coordenadas = embarcacao[posicao]
-
-                for coordenada in coordenadas:
-
-                    for coordinate in dados_de_posicao:
-
-                        if coordenada[0] == coordinate[0] and coordenada[1] == coordinate[1]:
-
-                            contador_falso += 1
-                        
-                       
-    
-
-    if contador_falso > 0:
-
-        return False
-    
-    else: 
-
-        return True
+        for loc in embarcacao["posicoes"]:
+            if loc in posicao:
+                return False
+                
+    return True
