@@ -189,21 +189,44 @@ while jogando:
     
     while coordenada not in lista_ataque:
     
-        linha = input(int("Qual linha você deseja atacar?"))
+        linha = int(input("Qual linha você deseja atacar?"))
 
         while linha < 0 or linha > 9:
 
             print("Linha inválida!")
 
-            linha = input(int("Qual linha você deseja atacar?"))
+            linha = int(input("Qual linha você deseja atacar?"))
 
-        coluna = input(int("Qual coluna você deseja atacar?"))
+        coluna = int(input("Qual coluna você deseja atacar?"))
 
         while coluna < 0 or coluna > 9:
 
             print("Linha inválida!")
 
-            coluna = input(int("Qual coluna você deseja atacar?"))
+            coluna = int(input("Qual coluna você deseja atacar?"))
+        
+        coordenada = [linha, coluna]
+
+        if coordenada in lista_ataque:
+
+            print("A posição linha {0} e coluna {1} já foi informada anteriormente!".format(linha, coluna))
+        
+        else:
+
+            tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha, coluna)
+
+            lista_ataque.append(coordenada)
+        
+        navios_afundados = afundados(frota_oponente, tabuleiro_oponente)
+
+        if navios_afundados == len(frota_oponente):
+
+            print('Parabéns! Você derrubou todos os navios do seu oponente!')
+
+            break
+
+        
+
 
             
         
@@ -212,5 +235,4 @@ while jogando:
 
 
 
-    # TODO: Implemente aqui a lógica para verificar se a linha e coluna não foram escolhidas anteriormente
-    # TODO: Implemente aqui a lógica para verificar se o jogador derrubou todos os navios do oponente
+   
