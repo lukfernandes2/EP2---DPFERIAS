@@ -135,3 +135,33 @@ while jogando:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
 
             jogando = False
+
+    lista_ataque_oponente = []
+
+    linha_oponente = 0
+
+    coluna_oponente = 0
+
+    coordenada_oponente = [linha, coluna]
+    
+    while coordenada_oponente not in lista_ataque_oponente:
+    
+        linha_oponente = random.randint(0,9)
+
+        coluna_oponente = random.randint(0,9)
+        
+        coordenada_oponente = [linha_oponente, coluna_oponente]
+
+        if coordenada_oponente not in lista_ataque_oponente:
+
+            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_oponente, coluna_oponente)
+
+            lista_ataque_oponente.append(coordenada_oponente)
+        
+        navios_afundados_oponente = afundados(frota_jogador, tabuleiro_jogador)
+
+        if navios_afundados_oponente == len(frota_jogador):
+
+            print('Xi! O oponente derrubou toda a sua frota =(')
+
+            jogando = False
