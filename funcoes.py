@@ -45,7 +45,7 @@ def posiciona_frota (frota):
 
     for embarcacao in frota:
 
-        for posicao, numeros in embarcacao.items():
+        for posicao, numeros in embarcacao.items(): 
 
             if posicao == "posicoes":
 
