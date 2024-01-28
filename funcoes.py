@@ -46,23 +46,9 @@ def posiciona_frota (frota):
   ]
 
     for embarcacao in frota:
-
-        for posicao, numeros in embarcacao.items(): 
-
-            if posicao == "posicoes":
-
-                coordenadas = embarcacao[posicao]
         
-                for i in range(len(tabuleiro_atualizado)):
-
-                    for coordenada in coordenadas:
-
-                        if coordenada[0] == i:
-
-                            for j in range(len(tabuleiro_atualizado[i])):
-                                if j == coordenada[1]:
-
-                                    tabuleiro_atualizado[i][j] = 1
+        for coordenada in embarcacao["posicoes"]:
+            tabuleiro_atualizado[coordenada[0]][coordenada[1]] = 1
     
     return tabuleiro_atualizado
 
